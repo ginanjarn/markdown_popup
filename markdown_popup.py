@@ -158,12 +158,15 @@ class HTMLRenderer(BaseRenderer):
         return escape_html(text)
 
     def link(self, link, text=None, title=None):
+        text = text or ""
+        title = title or ""
         target = self._safe_url(link)
         opt_title = f' title="{escape_html(title)}"'
         text = text or link
         return f'<a href="{target}"{opt_title}>{text}</a>'
 
     def image(self, src, alt="", title=None):
+        title = title or ""
         src = self._safe_url(src)
         alt = escape_html(alt)
         opt_title = f' title="{escape_html(title)}"'
