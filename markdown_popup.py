@@ -1,5 +1,7 @@
 """markdow popup"""
 
+from pathlib import Path
+
 import sublime
 import sublime_plugin
 
@@ -241,42 +243,8 @@ class HTMLRenderer(BaseRenderer):
         return "".join(data)
 
 
-css_style = """\
-body {
-    margin: 0.5em;
-    font-family: BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    line-height: 1.5;
-}
-pre {
-    background-color: color(var(--background) alpha(0.5));
-}
-.code,.code-block,.blockquote {
-    background-color: color(var(--background) alpha(0.8));
-}
-pre,.code,.code-block {
-    font-family: monospace;
-}
-.code {
-    display: inline;
-    padding: 0, 0.3em, 0, 0.3em;
-    border-radius: 0.2em;
-    border-style: solid;
-}
-pre,.code-block,.blockquote {
-    display: block;
-    padding : 0.5em;
-    margin: 0.3em;
-    border-radius: 0.3em;
-}
-.code-block {
-}
-.blockquote {
-}
-ul,ol {
-    margin: 0.5em;
-    padding: 0;
-}
-"""
+css_path = Path(__file__).parent.joinpath("resource", "layout.css")
+css_style = css_path.read_text() if css_path.is_file else ""
 
 
 class MarkdownPopupCommand(sublime_plugin.TextCommand):
