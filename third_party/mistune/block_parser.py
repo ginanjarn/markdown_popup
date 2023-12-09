@@ -38,7 +38,7 @@ _BLOCK_HTML_RULE7 = (
 )
 
 _PARAGRAPH_SPLIT = re.compile(r'\n{2,}')
-_LIST_BULLET = re.compile(r'^ *([\*\+-]|\d+[.)])')
+_LIST_BULLET = re.compile(r'^ *([\*\+-→]|\d+[.)])')
 
 
 class BlockParser(ScannerParser):
